@@ -5,10 +5,10 @@
   "author": "76040320K <rlatmdgh567@naver.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/app.js",
-    "build": "tsc -p .",
+    "start": "node dist/src/app.js",
+    "build": "tsc --build --clean",
     "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/app.ts",
-    "protoc": "npx rimraf ./grpc && mkdir -p ./grpc && grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./grpc --grpc_out=binary:./grpc --plugin=protoc-gen-grpc=./node_modules/.bin/grpc_tools_node_protoc_plugin -I ./proto ./proto/*.proto && protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=./grpc -I ./proto ./proto/*.proto"
+    "protoc": "npx rimraf ./generated && mkdir -p ./generated && grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./generated --grpc_out=binary:./generated --plugin=protoc-gen-grpc=./node_modules/.bin/grpc_tools_node_protoc_plugin -I ./proto ./proto/*.proto && protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=./generated -I ./proto ./proto/*.proto"
   },
   "lint-staged": {
     "*.js": [

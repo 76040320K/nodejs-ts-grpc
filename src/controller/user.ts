@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import messages from "../../grpc/userData_pb";
-import services from "../../grpc/userData_grpc_pb";
+import messages from "../../generated/userData_pb";
+import services from "../../generated/userData_grpc_pb";
 import * as grpc from "@grpc/grpc-js";
 import * as _ from "lodash";
 
