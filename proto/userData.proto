@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package grpc_application;
+
+option go_package = "go-grpc/grpc_application";
+
+service App {
+    rpc GetData(DataRequest) returns (DataResponse);
+    rpc ListData(DataListRequest) returns (DataListResponse);
+}
+
+message DataSet {
+    int32 idx = 1;
+    string name = 2;
+}
+
+message DataRequest {
+    int32 idx = 1;
+}
+
+message DataResponse {
+    DataSet data_object = 1;
+}
+
+message DataListRequest {}
+
+message DataListResponse {
+    repeated DataSet data_obejct_list = 1;
+}
