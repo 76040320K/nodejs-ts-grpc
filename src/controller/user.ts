@@ -4,7 +4,7 @@ import services from "../../generated/userData_grpc_pb";
 import * as grpc from "@grpc/grpc-js";
 import * as _ from "lodash";
 
-const userDataGrpcClient = new services.AppClient("host.docker.internal:3041", grpc.credentials.createInsecure());
+const userDataGrpcClient = new services.AppClient("10.100.32.212:3041", grpc.credentials.createInsecure());
 
 interface userIdx {
   idx: number;

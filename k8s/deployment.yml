@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-ts
+  labels:
+    app: nodejs-ts
+    version: canary
+  namespace: nodejs-ts
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nodejs-ts
+      version: canary
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: nodejs-ts
+        version: canary
+    spec:
+      containers:
+      - image: 452402024371.dkr.ecr.us-west-2.amazonaws.com/nodejs-ts
+        imagePullPolicy: Always
+        name: nodejs-ts
+        ports:
+            - containerPort: 3001
+              protocol: TCP
